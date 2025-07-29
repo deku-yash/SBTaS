@@ -54,11 +54,10 @@
 
     .tabs {
       display: flex;
-      gap: none;
+      gap: 15px;
     }
 
     .tabs button {
-      padding: 0.5rem 1rem;
       background: none;
       border: none;
       border-bottom: 2px solid transparent;
