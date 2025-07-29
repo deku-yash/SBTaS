@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Gallery - Tiles & Sanitary</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-banner">
+    <h1>Shree Balaji Tiles & Sanitary - Wholesale Supplier </h1>
+    <div class="contact-info">📞 +91- 9729090024 | ✉️ shreebalajitileandsanitary1100@gmail.com</div>
+  </div>
+
+    <div class="gallery" id="tiles">
+      <div class="product" onclick="openOverlay('Orissa Pan/6cb70e20-6655-461b-86fc-fde96f5edacb.png', 'Plain White', 'INFORMATION HERE')">
+          <img src="Orissa Pan/6cb70e20-6655-461b-86fc-fde96f5edacb.png" alt="Plain White" />
+            <div class="info">
+                <h3>Plain White </h3>
+                <p>INFORMATION HERE</p>
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Orissa Pan/IMG-20250727-WA0103.jpg', 'Blue', 'INFORMATION HERE')">
+          <img src="Orissa Pan/IMG-20250727-WA0103.jpg" alt="Blue" />
+            <div class="info">
+                <h3>Blue </h3>
+                <p>INFORMATION HERE</p>
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Orissa Pan/IMG-20250727-WA0104.jpg', 'Brown', 'INFORMATION HERE')">
+          <img src="Orissa Pan/IMG-20250727-WA0104.jpg" alt="Brown" />
+            <div class="info">
+                <h3>Brown </h3>
+                <p>INFORMATION HERE</p>
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Orissa Pan/IMG-20250727-WA0105.jpg', 'Pink', 'INFORMATION HERE')">
+          <img src="Orissa Pan/IMG-20250727-WA0105.jpg" alt="Pink" />
+            <div class="info">
+                <h3>Pink </h3>
+                <p>INFORMATION HERE</p>
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Orissa Pan/IMG-20250727-WA0106.jpg', 'Light Green', 'INFORMATION HERE')">
+          <img src="Orissa Pan/IMG-20250727-WA0106.jpg" alt="Light Green" />
+            <div class="info">
+                <h3>Light Green </h3>
+                <p>INFORMATION HERE</p>
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Orissa Pan/IMG-20250727-WA0108.jpg', 'Plain White', 'INFORMATION HERE')">
+          <img src="Orissa Pan/IMG-20250727-WA0108.jpg" alt="Plain White" />
+            <div class="info">
+                <h3>Plain White </h3>
+                <p>INFORMATION HERE</p>
+            </div>
+        </div>
+      </div>
+
+  
+
+   <div class="overlay" id="overlay">
+    <div class="close-btn" onclick="closeOverlay()">&times;</div>
+    <div class="overlay-content">
+      <img id="overlay-img" class="overlay-img" src="" alt="Zoomed Product" />
+      <div class="overlay-info">
+        <h2 id="overlay-title"></h2>
+        <p id="overlay-desc"></p>
+      </div>
+    </div>
+  </div>
+
+   <script>
+    function showCategory(category) {
+      const categories = ['tiles', 'sanitary', 'toilets', 'sets'];
+      categories.forEach(cat => {
+        document.getElementById(cat).classList.add('hidden');
+      });
+      document.getElementById(category).classList.remove('hidden');
+
+      const buttons = document.querySelectorAll('.tabs button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function openOverlay(imgSrc, title, desc) {
+      document.getElementById('overlay').style.display = 'flex';
+      document.getElementById('overlay-img').src = imgSrc;
+      document.getElementById('overlay-title').textContent = title;
+      document.getElementById('overlay-desc').textContent = desc;
+    }
+
+    function closeOverlay() {
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

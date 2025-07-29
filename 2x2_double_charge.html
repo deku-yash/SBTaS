@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Gallery - Tiles & Sanitary</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-banner">
+    <h1>Shree Balaji Tiles & Sanitary - Wholesale Supplier </h1>
+    <div class="contact-info">📞 +91- 9729090024 | ✉️ shreebalajitileandsanitary1100@gmail.com</div>
+  </div>
+
+  <div class="gallery" id="tiles">
+    <div class="product" onclick="openOverlay('Double charge 2x2/WhatsApp Image 2025-07-27 at 11.26.02_4986cb73.jpg', 'Tropicana Italian', 'INFORMATION HERE')">
+      <img src="Double charge 2x2/WhatsApp Image 2025-07-27 at 11.26.02_4986cb73.jpg" alt="Tropicana Italian" />
+      <div class="info">
+        <h3>Tropicana Italian </h3>
+        <p> INFORMATION HERE</p>
+      </div>
+    </div>
+
+     <div class="product" onclick="openOverlay('Double charge 2x2/WhatsApp Image 2025-07-27 at 11.26.03_2dc93f28.jpg', 'Tropicana Sand', 'INFORMATION HERE')">
+      <img src="Double charge 2x2/WhatsApp Image 2025-07-27 at 11.26.03_2dc93f28.jpg" alt="Tropicana Sand" />
+      <div class="info">
+        <h3>Tropicana Sand </h3>
+        <p>INFORMATION HERE</p>
+      </div>
+    </div>
+
+     <div class="product" onclick="openOverlay('Double charge 2x2/WhatsApp Image 2025-07-27 at 11.26.03_4fb2d405.jpg', 'Tropicana Pista', 'INFORMATION HERE')">
+      <img src="Double charge 2x2\WhatsApp Image 2025-07-27 at 11.26.03_4fb2d405.jpg" alt="Tropicana Pista" />
+      <div class="info">
+        <h3>Tropicana Pista </h3>
+        <p>INFORMATION HERE</p>
+      </div>
+    </div>
+
+     <div class="product" onclick="openOverlay('Double charge 2x2/WhatsApp Image 2025-07-27 at 11.26.03_e96fcdba.jpg', 'Tropicana Graphite', 'INFORMATION HERE')">
+      <img src="Double charge 2x2\WhatsApp Image 2025-07-27 at 11.26.03_e96fcdba.jpg" alt="Tropicana Graphite" />
+      <div class="info">
+        <h3>Tropicana Graphite </h3>
+        <p>INFORMATION HERE</p>
+      </div>
+    </div>
+
+   </div>
+
+  
+
+   <div class="overlay" id="overlay">
+    <div class="close-btn" onclick="closeOverlay()">&times;</div>
+    <div class="overlay-content">
+      <img id="overlay-img" class="overlay-img" src="" alt="Zoomed Product" />
+      <div class="overlay-info">
+        <h2 id="overlay-title"></h2>
+        <p id="overlay-desc"></p>
+      </div>
+    </div>
+  </div>
+
+   <script>
+    function showCategory(category) {
+      const categories = ['tiles', 'sanitary', 'toilets', 'sets'];
+      categories.forEach(cat => {
+        document.getElementById(cat).classList.add('hidden');
+      });
+      document.getElementById(category).classList.remove('hidden');
+
+      const buttons = document.querySelectorAll('.tabs button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function openOverlay(imgSrc, title, desc) {
+      document.getElementById('overlay').style.display = 'flex';
+      document.getElementById('overlay-img').src = imgSrc;
+      document.getElementById('overlay-title').textContent = title;
+      document.getElementById('overlay-desc').textContent = desc;
+    }
+
+    function closeOverlay() {
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Gallery - Tiles & Sanitary</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .category-button {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .category-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .category-buttons-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-banner">
+    <h1>Shree Balaji Tiles & Sanitary - Wholesale Supplier </h1>
+    <div class="contact-info">📞 +91- 9729090024 | ✉️ shreebalajitileandsanitary1100@gmail.com</div>
+  </div>
+
+  <header>
+    <div class="tabs">
+  <button class="active" onclick="showCategory(event, 'tiles')">Tiles</button>
+  <button onclick="location.href='sanitary.html'">Sanitary</button>
+  <button onclick="showCategory(event, 'toilets')">Toilets</button>
+  <button onclick="showCategory(event, 'sets')">Sets</button>
+  <button onclick="location.href='vanity.html'">Vanity/Cabinet</button>
+</div>
+
+  </header>
+
+  <div class="gallery" id="tiles">
+    <div class="category-buttons-wrapper">
+      <button class="category-button" onclick="location.href='2x2_double_charge.html'">2x2 Double Charge</button>
+      <button class="category-button" onclick="location.href='2x2_porcelain_matt.html'">2x2 Porcelain Matt</button>
+      <button class="category-button" onclick="location.href='PGVT_2x4.html'">2x4 PGVT</button>
+      <button class="category-button" onclick="location.href='tiles-parking.html'">Parking Tiles</button>
+    </div>
+  </div>
+
+  
+  <div class="gallery hidden" id="toilets">
+    <div class="category-buttons-wrapper">
+      <button class="category-button" onclick="location.href='siphonic.html'">Siphonic Toilets</button>
+      <button class="category-button" onclick="location.href='non_siphonic.html'">Non-Siphonic Toilets</button>
+      <button class="category-button" onclick="location.href='urinal.html'">Urinals</button>
+      <button class="category-button" onclick="location.href='orissa_pan.html'">Orissa Pan</button>
+    </div>
+  </div>
+
+  <div class="gallery hidden" id="sets">
+    <div class="category-buttons-wrapper">
+      <button class="category-button" onclick="location.href='vitrosa.html'">Vitrosa Sets</button>
+      <button class="category-button" onclick="location.href='damru_designer.html'">Designer/Damru</button>
+    </div>
+  </div>
+
+  
+
+  <script>
+   function showCategory(event, category) {
+  const categories = ['tiles', 'toilets', 'sets'];
+  categories.forEach(cat => {
+    const section = document.getElementById(cat);
+    if (section) section.classList.add('hidden');
+  });
+  const selected = document.getElementById(category);
+  if (selected) selected.classList.remove('hidden');
+
+  const buttons = document.querySelectorAll('.tabs button');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  }
+  </script>
+
+</body>
+</html>
