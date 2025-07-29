@@ -54,7 +54,7 @@
 
     .tabs {
       display: flex;
-      gap: 1rem;
+      gap: none;
     }
 
     .tabs button {
