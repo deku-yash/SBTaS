@@ -279,37 +279,32 @@
   </div>
 
 <script>
-  // On page load, push a base state so back button doesn't exit
-  window.addEventListener('load', () => {
-    if (!history.state) {
-      history.replaceState({ pageLoaded: true }, '');
-    }
-  });
-
+  // Open overlay and push state
   function openOverlay(imgSrc, title, desc) {
     document.getElementById('overlay').style.display = 'flex';
     document.getElementById('overlay-img').src = imgSrc;
     document.getElementById('overlay-title').textContent = title;
     document.getElementById('overlay-desc').textContent = desc;
 
-    // Push a state to enable back-button-close
-    history.pushState({ overlayOpen: true }, '');
+    // Push fake state for overlay
+    history.pushState({ overlay: true }, '');
   }
 
+  // Close overlay
   function closeOverlay() {
     document.getElementById('overlay').style.display = 'none';
-
-    // If overlay is open, go back to previous state
-    if (history.state && history.state.overlayOpen) {
-      history.back(); // triggers popstate, which closes overlay
-    }
   }
 
-  // Handle back button
-  window.addEventListener('popstate', function (event) {
-    if (event.state && event.state.overlayOpen) {
-      document.getElementById('overlay').style.display = 'none';
+  // Back button handler
+  window.addEventListener('popstate', function (e) {
+    if (e.state && e.state.overlay) {
+      closeOverlay();
     }
+  });
+
+  // Prevent accidental page exit when overlay is open
+  window.addEventListener('load', () => {
+    history.replaceState({ base: true }, ''); // Make sure there's a base state
   });
 </script>
 
