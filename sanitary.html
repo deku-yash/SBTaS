@@ -273,7 +273,7 @@
       <img id="overlay-img" class="overlay-img" src="" alt="Zoomed Product" />
       <div class="overlay-info">
         <h2 id="overlay-title"></h2>
-        <p id="overlay-desc"></p>
+<!--         <p id="overlay-desc"></p> -->
       </div>
     </div>
   </div>
@@ -295,7 +295,7 @@
     document.getElementById('overlay').style.display = 'flex';
     document.getElementById('overlay-img').src = imgSrc;
     document.getElementById('overlay-title').textContent = title;
-    document.getElementById('overlay-desc').textContent = desc;
+    // document.getElementById('overlay-desc').textContent = desc;
 
     // Push a new history state to allow back button to close overlay
     history.pushState({ overlayOpen: true }, null);
