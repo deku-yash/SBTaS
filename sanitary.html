@@ -278,33 +278,44 @@
     </div>
   </div>
 
-<script>
-  // Open overlay and push state
+  <script>
+  function showCategory(category) {
+    const categories = ['tiles', 'sanitary', 'toilets', 'sets'];
+    categories.forEach(cat => {
+      document.getElementById(cat).classList.add('hidden');
+    });
+    document.getElementById(category).classList.remove('hidden');
+
+    const buttons = document.querySelectorAll('.tabs button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
   function openOverlay(imgSrc, title, desc) {
     document.getElementById('overlay').style.display = 'flex';
     document.getElementById('overlay-img').src = imgSrc;
     document.getElementById('overlay-title').textContent = title;
     document.getElementById('overlay-desc').textContent = desc;
 
-    // Push fake state for overlay
-    history.pushState({ overlay: true }, '');
+    // Push a new history state to allow back button to close overlay
+    history.pushState({ overlayOpen: true }, null);
   }
 
-  // Close overlay
   function closeOverlay() {
     document.getElementById('overlay').style.display = 'none';
+
+    // Only go back if the overlay was opened
+    if (history.state && history.state.overlayOpen) {
+      history.back();
+    }
   }
 
-  // Back button handler
-  window.addEventListener('popstate', function (e) {
-    if (e.state && e.state.overlay) {
-      closeOverlay();
+  // Handle browser back button
+  window.addEventListener('popstate', function (event) {
+    // If overlay is open, close it
+    if (document.getElementById('overlay').style.display === 'flex') {
+      document.getElementById('overlay').style.display = 'none';
     }
-  });
-
-  // Prevent accidental page exit when overlay is open
-  window.addEventListener('load', () => {
-    history.replaceState({ base: true }, ''); // Make sure there's a base state
   });
 </script>
 
