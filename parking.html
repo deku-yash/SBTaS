@@ -68,29 +68,46 @@
     </div>
   </div>
 
-   <script>
-    function showCategory(category) {
-      const categories = ['tiles', 'sanitary', 'toilets', 'sets'];
-      categories.forEach(cat => {
-        document.getElementById(cat).classList.add('hidden');
-      });
-      document.getElementById(category).classList.remove('hidden');
+ <script>
+  function showCategory(category) {
+    const categories = ['tiles', 'sanitary', 'toilets', 'sets'];
+    categories.forEach(cat => {
+      document.getElementById(cat).classList.add('hidden');
+    });
+    document.getElementById(category).classList.remove('hidden');
 
-      const buttons = document.querySelectorAll('.tabs button');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+    const buttons = document.querySelectorAll('.tabs button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  function openOverlay(imgSrc, title, desc) {
+    document.getElementById('overlay').style.display = 'flex';
+    document.getElementById('overlay-img').src = imgSrc;
+    document.getElementById('overlay-title').textContent = title;
+    document.getElementById('overlay-desc').textContent = desc;
+
+    // Push a new history state to allow back button to close overlay
+    history.pushState({ overlayOpen: true }, null);
+  }
+
+  function closeOverlay() {
+    document.getElementById('overlay').style.display = 'none';
+
+    // Only go back if the overlay was opened
+    if (history.state && history.state.overlayOpen) {
+      history.back();
     }
+  }
 
-    function openOverlay(imgSrc, title, desc) {
-      document.getElementById('overlay').style.display = 'flex';
-      document.getElementById('overlay-img').src = imgSrc;
-      document.getElementById('overlay-title').textContent = title;
-      document.getElementById('overlay-desc').textContent = desc;
-    }
-
-    function closeOverlay() {
+  // Handle browser back button
+  window.addEventListener('popstate', function (event) {
+    // If overlay is open, close it
+    if (document.getElementById('overlay').style.display === 'flex') {
       document.getElementById('overlay').style.display = 'none';
     }
-  </script>
+  });
+</script>
+
 </body>
 </html>
