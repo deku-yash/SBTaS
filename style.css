@@ -71,10 +71,13 @@
     }
 
     .gallery {
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding: 1rem;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh; /* or 100vh if you want full screen */
     }
 
     .product {
@@ -84,6 +87,8 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s;
       cursor: pointer;
+      flex: 1 1 200px; /* min width 200px, flexible */
+      max-width: 250px;
     }
 
     .product:hover {
@@ -176,3 +181,4 @@
 
 
     
+
