@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Gallery - Tiles & Sanitary</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-banner">
+    <h1>Shree Balaji Tiles & Sanitary - Wholesale Supplier </h1>
+    <div class="contact-info">📞 +91- 9729090024 | ✉️ shreebalajitileandsanitary1100@gmail.com</div>
+  </div>
+
+    <div class="gallery" id="tiles">    
+        <!-- SANITARY -->
+        <div class="product" onclick="openOverlay('Sanitary/alpha set.jpg', 'Alpha Set', 'INFORMATION HERE')">
+          <img src="Sanitary/alpha set.jpg" alt="Aplha Set" />
+            <div class="info">
+                <h3>Alpha Set</h3>
+<!--                 <p>INFORMATION HERE</p> -->
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Sanitary/big polo set.jpg', 'Big polo set', 'INFORMATION HERE')">
+          <img src="Sanitary/big polo set.jpg" alt="Big polo set" />
+            <div class="info">
+                <h3>Big polo set</h3>
+<!--                 <p>INFORMATION HERE</p> -->
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Sanitary/big sterling.jpg', 'Big Sterling', 'INFORMATION HERE')">
+          <img src="Sanitary/big sterling.jpg" alt="Big sterling" />
+            <div class="info">
+                <h3>Big sterling</h3>
+<!--                 <p>INFORMATION HERE</p> -->
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Sanitary/polo mini set (2).jpg', 'Polo Mini Set', 'INFORMATION HERE')">
+          <img src="Sanitary/polo mini set (2).jpg" alt="Polo mini set" />
+            <div class="info">
+                <h3> Polo Mini Set</h3>
+<!--                 <p>INFORMATION HERE</p> -->
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Sanitary/sophia 22x16.jpg', 'Sophia 22x16', 'INFORMATION HERE')">
+          <img src="Sanitary/sophia 22x16.jpg" alt="Sophia 22x16" />
+            <div class="info">
+                <h3> Sophia 22x16</h3>
+<!--                 <p>INFORMATION HERE</p> -->
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Sanitary/star gold 23x17.jpg', 'Star Gold 23x17', 'INFORMATION HERE')">
+          <img src="Sanitary/star gold 23x17.jpg" alt="Star Gold 23x17" />
+            <div class="info">
+                <h3> Star Gold 23x17</h3>
+<!--                 <p>INFORMATION HERE</p> -->
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Sanitary/w-b 9x12.jpg', 'Washbasin 9x12', 'INFORMATION HERE')">
+          <img src="Sanitary/w-b 9x12.jpg" alt="w-b 9x12" />
+            <div class="info">
+                <h3> Washbasin 9x12</h3>
+<!--                 <p>INFORMATION HERE</p> -->
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Sanitary/w-b 14x11.jpg', 'Washbasin 14x11', 'INFORMATION HERE')">
+          <img src="Sanitary/w-b 14x11.jpg" alt="w-b 14x11" />
+            <div class="info">
+                <h3> Washbasin 14x11</h3>
+<!--                 <p>INFORMATION HERE</p> -->
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Sanitary/w-b 16x16 corner.jpg', 'Washbasin corner', 'INFORMATION HERE')">
+          <img src="Sanitary/w-b 16x16 corner.jpg" alt="Washbasin Corner" />
+            <div class="info">
+                <h3> Washbasin Corner 16x16</h3>
+<!--                 <p>INFORMATION HERE</p> -->
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Sanitary/w-b 18x12.jpg', 'Washbasin 18x12', 'INFORMATION HERE')">
+          <img src="Sanitary/w-b 18x12.jpg" alt="Washbasin" />
+            <div class="info">
+                <h3> Washbasin 18x12</h3>
+<!--                 <p>INFORMATION HERE</p> -->
+            </div>
+        </div>
+
+        <div class="product" onclick="openOverlay('Sanitary/w-b 22x16 + pedestal.jpg', 'pedestal + washbasin', 'INFORMATION HERE')">
+          <img src="Sanitary/w-b 22x16 + pedestal.jpg" alt="pedestal+washbasin" />
+            <div class="info">
+                <h3> Washbasin & Pedestal</h3>
+<!--                 <p>INFORMATION HERE</p> -->
+            </div>
+        </div>
+        
+    </div>
+
+  
+
+   <div class="overlay" id="overlay">
+    <div class="close-btn" onclick="closeOverlay()">&times;</div>
+    <div class="overlay-content">
+      <img id="overlay-img" class="overlay-img" src="" alt="Zoomed Product" />
+      <div class="overlay-info">
+        <h2 id="overlay-title"></h2>
+      <!--<p id="overlay-desc"></p> -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+  function showCategory(category) {
+    const categories = ['tiles', 'sanitary', 'toilets', 'sets'];
+    categories.forEach(cat => {
+      document.getElementById(cat).classList.add('hidden');
+    });
+    document.getElementById(category).classList.remove('hidden');
+
+    const buttons = document.querySelectorAll('.tabs button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  function openOverlay(imgSrc, title, desc) {
+    document.getElementById('overlay').style.display = 'flex';
+    document.getElementById('overlay-img').src = imgSrc;
+    document.getElementById('overlay-title').textContent = title;
+    // document.getElementById('overlay-desc').textContent = desc;
+
+    // Push a new history state to allow back button to close overlay
+    history.pushState({ overlayOpen: true }, null);
+  }
+
+  function closeOverlay() {
+    document.getElementById('overlay').style.display = 'none';
+
+    // Only go back if the overlay was opened
+    if (history.state && history.state.overlayOpen) {
+      history.back();
+    }
+  }
+
+  // Handle browser back button
+  window.addEventListener('popstate', function (event) {
+    // If overlay is open, close it
+    if (document.getElementById('overlay').style.display === 'flex') {
+      document.getElementById('overlay').style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
